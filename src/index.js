@@ -46,7 +46,7 @@ class GooglePlacesSuggest extends React.Component {
   }
 
   handleSelectPrediction(suggest) {
-    const {onSelectSuggest} = this.props
+    const {onSelectSuggest, onGeocodeSuggest} = this.props
     this.setState(
       {
         open: false,
@@ -54,8 +54,10 @@ class GooglePlacesSuggest extends React.Component {
       },
       () => {
         this.hasFocus = false
+        onSelectSuggest(suggest)
+        if (!onGeocodeSuggest) return;
         this.geocodePrediction(suggest.description, result => {
-          onSelectSuggest(result, suggest)
+          onGeocodeSuggest(result, suggest)
         })
       }
     )
