@@ -145,7 +145,9 @@ class GooglePlacesSuggest extends React.Component {
 
   handleDOMClick() {
     if (!this.hasFocus && this.state.open) {
-      this.setState({open: false})
+      this.setState({open: false}, () => {
+        if (this.props.onBlur) this.props.onBlur();
+      });
     }
   }
 
