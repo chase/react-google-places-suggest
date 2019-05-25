@@ -55,7 +55,7 @@ class GooglePlacesSuggest extends React.Component {
       () => {
         this.hasFocus = false
         onSelectSuggest(suggest)
-        if (!onGeocodeSuggest) return;
+        if (!onGeocodeSuggest) return
         this.geocodePrediction(suggest.description, result => {
           onGeocodeSuggest(result, suggest)
         })
@@ -146,8 +146,8 @@ class GooglePlacesSuggest extends React.Component {
   handleDOMClick() {
     if (!this.hasFocus && this.state.open) {
       this.setState({open: false}, () => {
-        if (this.props.onBlur) this.props.onBlur();
-      });
+        if (this.props.onBlur) this.props.onBlur()
+      })
     }
   }
 
@@ -185,6 +185,8 @@ GooglePlacesSuggest.propTypes = {
   googleMaps: PropTypes.object.isRequired,
   onNoResult: PropTypes.func,
   onSelectSuggest: PropTypes.func,
+  onGeocodeSuggest: PropTypes.func,
+  onBlur: PropTypes.func,
   onStatusUpdate: PropTypes.func,
   customContainerRender: PropTypes.func,
   customRender: PropTypes.func,
